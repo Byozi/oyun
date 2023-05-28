@@ -517,20 +517,6 @@ async def start_private(message):  # , **kwargs
 
     msg = message.text
 
-  if chat_tipi == "private":
-     f(f"start", True)
-            keyboard = types.InlineKeyboardMarkup()
-
-            callback_button = types.InlineKeyboardButton(
-                text="🇹🇷 ʙᴇɴɪ ɢʀᴜʙᴀ ᴇᴋʟᴇ 🇹🇷", url=".")
-            callback_button2 = types.InlineKeyboardButton(
-                text="⚙️ ʀᴇsᴍɪ ᴋᴀɴᴀʟ ⚙️", url="https://t.me/SeraGameBot")
-            keyboard.add(callback_button)
-            keyboard.add(callback_button2)
-            await bot.send_message(chat_id, f'<b>🇹🇷 Merhaba, Ben bir oyun botuyum .\n\n🎯 Çeşitli oyunlar oynamak ve eğlenceli vakit geçirmek için benimle oynayabilirsin .\n\n⚙️ Benimle oynamak için beni bir gruba ekleyin ve Yönetici Yapın .</b>',  reply_markup=keyboard)
-
-        return
-
     if chat_tipi == "private":
         ayrik = msg.split(" ")
         if len(ayrik) == 2:
@@ -548,7 +534,18 @@ async def start_private(message):  # , **kwargs
                 temp[f"{user_id}.kelime"]["konum"] = konum
             else:
                 await bot.send_message(user_id, 'Bu oyunu siz açmamışsınız 🚫')
-        
+        else:
+            f(f"privates.{user_id}.start", True)
+            keyboard = types.InlineKeyboardMarkup()
+
+            callback_button = types.InlineKeyboardButton(
+                text="🇹🇷 ʙᴇɴɪ ɢʀᴜʙᴀ ᴇᴋʟᴇ 🇹🇷", url=".")
+            callback_button2 = types.InlineKeyboardButton(
+                text="⚙️ ʀᴇsᴍɪ ᴋᴀɴᴀʟ ⚙️", url="https://t.me/SeraGameBot")
+            keyboard.add(callback_button)
+            keyboard.add(callback_button2)
+            await bot.send_message(chat_id, f'<b>🇹🇷 Merhaba, Ben bir oyun botuyum .\n\n🎯 Çeşitli oyunlar oynamak ve eğlenceli vakit geçirmek için benimle oynayabilirsin .\n\n⚙️ Benimle oynamak için beni bir gruba ekleyin ve Yönetici Yapın .</b>',  reply_markup=keyboard)
+
 
 async def sessiz_sinema_baslat(message, **kwargs):
     t0 = time.time()
