@@ -1269,7 +1269,7 @@ async def baslat(message):
     keyboard.add(callback_button1)
     keyboard.add(callback_button2)
     keyboard.add(callback_button3)
-    await bot.send_message(chat_id, f"👉🏻 Sera Oyun Botu ile oyun oynamaya hazır mısın?\n\n 👇🏻 Hazırsanız aşağıdan bir oyun modu seçin ve oynamaya hemen başlayın!/n/n", reply_markup=keyboard)
+    await bot.send_message(chat_id, f"👻 Sera Oyun Botu ile oyun oynamaya hazır mısın?\n\n 👉 Hazırsanız aşağıdan bir oyun modu seçin ve oynamaya hemen başlayın! 🫡/n/n", reply_markup=keyboard)
 
 # @bot.message_handler(state=MyStates.kelime)
 
@@ -1975,11 +1975,11 @@ async def callback_inline(cagri):  # çağrıcı cagrici
         if sorgu == "sessiz_sinema":
             keyboard = types.InlineKeyboardMarkup()
             callback_button1 = types.InlineKeyboardButton(
-                text="👥 Sıralı sunucu", callback_data="sessiz_sinema_oto-sunucu")
+                text="👥 Sıralı Sunucu", callback_data="sessiz_sinema_oto-sunucu")
             callback_button2 = types.InlineKeyboardButton(
-                text="📌 Sabit mod", callback_data="sessiz_sinema_sabit")
+                text="🎤 Sesli Yarışma", callback_data="sessiz_sinema_sabit")
             callback_button3 = types.InlineKeyboardButton(
-                text="🔈 Normal mod", callback_data="sessiz_sinema_normal")
+                text="🎙 Normal Yarışma", callback_data="sessiz_sinema_normal")
             keyboard.add(callback_button1, callback_button2)
             keyboard.add(callback_button3)
             await bot.edit_message_text(f'🎯 Oyun modu ne olsun? \n\n📖 Kelime oyunu, dil becerilerini geliştirmek ve eğlenceli bir şekilde zaman geçirmek için harika bir seçenek. Oyunda her oyuncu sırayla yeni bir kelime ekler.\n\n 👇🏻 Lütfen aşağıdan bir mod seçimi yapınız ', chat_id, cagri.message.id, reply_markup=keyboard)
