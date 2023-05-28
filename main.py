@@ -535,7 +535,7 @@ async def start_private(message):  # , **kwargs
             else:
                 await bot.send_message(user_id, 'Bu oyunu siz açmamışsınız 🚫')
         else:
-            f(f"privates.{user_id}.start", True)
+            f(f"start", True)
             keyboard = types.InlineKeyboardMarkup()
 
             callback_button = types.InlineKeyboardButton(
@@ -1210,7 +1210,7 @@ async def skorlar_komut(message):  # chat_tipi = message.chat.type
 
     keyboard = types.InlineKeyboardMarkup()
     callback_button1 = types.InlineKeyboardButton(
-        text="✍️ Sessiz Sinema", callback_data="skor_sessizsinema")
+        text="✍️ Kelime Oyunu", callback_data="skor_sessizsinema")
     callback_button2 = types.InlineKeyboardButton(
         text="🔠 Boşluk Doldurma", callback_data="skor_kelimeoyunu")
     keyboard.add(callback_button1)
@@ -1269,7 +1269,9 @@ async def baslat(message):
     keyboard.add(callback_button1)
     keyboard.add(callback_button2)
     keyboard.add(callback_button3)
-    await bot.send_message(chat_id, f"📜 Lütfen bir oyun tipi seçiniz.", reply_markup=keyboard)
+    await bot.send_message(chat_id, f"👉🏻 **Sera Oyun Botu** ile oyun oynamaya hazır mısın?/n/n
+
+👇🏻 Hazırsanız aşağıdan bir oyun modu seçin ve oynamaya hemen başlayın!/n/n", reply_markup=keyboard)
 
 # @bot.message_handler(state=MyStates.kelime)
 
