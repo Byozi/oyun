@@ -28,21 +28,19 @@ from telebot import asyncio_filters
 
 print(hex(getnode()))
 
-#import requests
-#from bs4 import BeautifulSoup
-
+import requests
+from bs4 import BeautifulSoup
 #import json
 
 
-# import tdk.gts #pip install tdk-py
-#import warnings
+import tdk.gts #pip install tdk-py
+import warnings
+
+warnings.filterwarnings( "ignore", module = "matplotlib\..*" ) #warnings.filterwarnings("ignore") → all warnings
+warnings.filterwarnings("ignore")
 
 
-# warnings.filterwarnings( "ignore", module = "matplotlib\..*" ) #warnings.filterwarnings("ignore") → all warnings
-# warnings.filterwarnings("ignore")
-
-
-bot_adi = ""
+bot_adi = "SeraGameBot"
 
 if hex(getnode()) in ["0xdc7b23bb434e"]:  # windows masaüstü pc ise veya laptop
     # kaç yaşındasın bot
@@ -59,9 +57,9 @@ else:
 temp = {}
 
 
-kurucu_id = 1449935113
+kurucu_id =1449935113
 
-admins = [kurucu_id, 1449935113]
+admins = [kurucu_id,1449935113]
 
 zaman_hassasiyeti = pow(10, 6)
 
