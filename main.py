@@ -16,6 +16,9 @@ import time
 import asyncio
 import os
 import json
+from aiogram import Bot, types
+from aiogram.dispatcher import Dispatcher
+from aiogram.utils import executor
 from uuid import getnode
 
 from telebot.async_telebot import AsyncTeleBot
