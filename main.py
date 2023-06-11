@@ -551,7 +551,7 @@ async def start_private(message):  # , **kwargs
                 text="🤖 Tüm Diğer Botlar ", url="https://t.me/SeraBotu")
             keyboard.add(callback_button)
             keyboard.add(callback_button2)
-            await bot.send_message(chat_id, f'<b>🎮 Sera Game Bot<b> çalışıyor!\n <i>Ben gruplarınızda eğlenceli oyunlar oynamanızı sağlayan bir yapay zekayım.\n\n Botu grubunuza ekleyip yönetici yapmanız yeterlidir.\n\n Tamamen ücretsiz olarak hizmet vermekteyim. Gruplarınıza eklemekten çekinmeyiniz. </i>',  reply_markup=keyboard)
+            await bot.send_message(chat_id, f'<b>🎮 Sera Game Bot</b> çalışıyor!\n <i>Ben gruplarınızda eğlenceli oyunlar oynamanızı sağlayan bir yapay zekayım.\n\n Botu grubunuza ekleyip yönetici yapmanız yeterlidir.\n\n Tamamen ücretsiz olarak hizmet vermekteyim. Gruplarınıza eklemekten çekinmeyiniz. </i>',  reply_markup=keyboard)
 
 
 async def sessiz_sinema_baslat(message, **kwargs):
