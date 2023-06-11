@@ -16,6 +16,9 @@ import time
 import asyncio
 import os
 import json
+from aiogram import Bot, types
+from aiogram.dispatcher import Dispatcher
+from aiogram.utils import executor
 from uuid import getnode
 
 from telebot.async_telebot import AsyncTeleBot
@@ -25,21 +28,19 @@ from telebot import asyncio_filters
 
 print(hex(getnode()))
 
-#import requests
-#from bs4 import BeautifulSoup
-
+import requests
+from bs4 import BeautifulSoup
 #import json
 
 
-# import tdk.gts #pip install tdk-py
-#import warnings
+import tdk.gts #pip install tdk-py
+import warnings
+
+warnings.filterwarnings( "ignore", module = "matplotlib\..*" ) #warnings.filterwarnings("ignore") → all warnings
+warnings.filterwarnings("ignore")
 
 
-# warnings.filterwarnings( "ignore", module = "matplotlib\..*" ) #warnings.filterwarnings("ignore") → all warnings
-# warnings.filterwarnings("ignore")
-
-
-bot_adi = ""
+bot_adi = "SeraGameBot"
 
 if hex(getnode()) in ["0xdc7b23bb434e"]:  # windows masaüstü pc ise veya laptop
     # kaç yaşındasın bot
@@ -56,9 +57,9 @@ else:
 temp = {}
 
 
-kurucu_id = 1449935113
+kurucu_id =1449935113
 
-admins = [kurucu_id, 1449935113]
+admins = [kurucu_id,1449935113]
 
 zaman_hassasiyeti = pow(10, 6)
 
@@ -539,12 +540,18 @@ async def start_private(message):  # , **kwargs
             keyboard = types.InlineKeyboardMarkup()
 
             callback_button = types.InlineKeyboardButton(
-                text="🇹🇷 ʙᴇɴɪ ɢʀᴜʙᴀ ᴇᴋʟᴇ 🇹🇷", url="https://t.me/SeraGameBot")
+                text="➕ Beni Gruba Ekle ", url="https://t.me/seragamebot?startgroup=a")
             callback_button2 = types.InlineKeyboardButton(
-                text="⚙️ ʀᴇsᴍɪ ᴋᴀɴᴀʟ ⚙️", url="https://t.me/SeraGameBot")
+                text="🎧 Müzik Botu ", url="https://t.me/SeraMusicBot")
+            callback_button3 = types.InlineKeyboardButton(
+                text="⚙️ Teknik Destek ", url="https://t.me/Scrable")  
+            callback_button4 = types.InlineKeyboardButton(
+                text="🤖 Tüm Diğer Botlar ", url="https://t.me/SeraBotu")
             keyboard.add(callback_button)
             keyboard.add(callback_button2)
-            await bot.send_message(chat_id, f'<b>🇹🇷 Merhaba, Ben bir oyun botuyum .\n\n🎯 Çeşitli oyunlar oynamak ve eğlenceli vakit geçirmek için benimle oynayabilirsin .\n\n⚙️ Benimle oynamak için beni bir gruba ekleyin ve Yönetici Yapın .</b>',  reply_markup=keyboard)
+            keyboard.add(callback_button3)
+            keyboard.add(callback_button4)
+            await bot.send_message(chat_id, f'<b>🎮 Sera Game Bot</b> çalışıyor!\n\n <i>Ben gruplarınızda eğlenceli oyunlar oynamanızı sağlayan bir yapay zekayım.\n\n Botu grubunuza ekleyip yönetici yapmanız yeterlidir.\n\n Tamamen ücretsiz olarak hizmet vermekteyim. Gruplarınıza eklemekten çekinmeyiniz. </i>',  reply_markup=keyboard)
 
 
 async def sessiz_sinema_baslat(message, **kwargs):
@@ -581,7 +588,7 @@ async def sessiz_sinema_baslat(message, **kwargs):
 
     konumlar = oyun_var_mi(chat_id)
     if konumlar != False:
-        await bot.send_message(kurucu_id, f'burası kullanılıyo 456456')
+        await bot.send_message(kurucu_id, f'Kurucu işlemi!!!')
         await bot.send_message(chat_id, f'❌ Sayın <a href="tg://user?id={user_id}">{first_name}</a>, şu anda aktif oyun var.')
         return
 
