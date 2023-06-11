@@ -545,13 +545,13 @@ async def start_private(message):  # , **kwargs
                 text="➕ Beni Gruba Ekle ", url="https://t.me/{bot_username}?startgroup=a")
             callback_button2 = types.InlineKeyboardButton(
                 text="🎧 Müzik Botu ", url="https://t.me/SeraMusicBot")
-            callback_button2 = types.InlineKeyboardButton(
+            callback_button3 = types.InlineKeyboardButton(
                 text="⚙️ Teknik Destek ", url="https://t.me/Scrable")  
-            callback_button2 = types.InlineKeyboardButton(
+            callback_button4 = types.InlineKeyboardButton(
                 text="🤖 Tüm Diğer Botlar ", url="https://t.me/SeraBotu")
             keyboard.add(callback_button)
             keyboard.add(callback_button2)
-            await bot.send_message(chat_id, f'<b>🎮 Sera Game Bot</b> çalışıyor!\n <i>Ben gruplarınızda eğlenceli oyunlar oynamanızı sağlayan bir yapay zekayım.\n\n Botu grubunuza ekleyip yönetici yapmanız yeterlidir.\n\n Tamamen ücretsiz olarak hizmet vermekteyim. Gruplarınıza eklemekten çekinmeyiniz. </i>',  reply_markup=keyboard)
+            await bot.send_message(chat_id, f'<b>🎮 Sera Game Bot</b> çalışıyor!\n\n <i>Ben gruplarınızda eğlenceli oyunlar oynamanızı sağlayan bir yapay zekayım.\n\n Botu grubunuza ekleyip yönetici yapmanız yeterlidir.\n\n Tamamen ücretsiz olarak hizmet vermekteyim. Gruplarınıza eklemekten çekinmeyiniz. </i>',  reply_markup=keyboard)
 
 
 async def sessiz_sinema_baslat(message, **kwargs):
