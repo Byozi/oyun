@@ -542,7 +542,7 @@ async def start_private(message):  # , **kwargs
             keyboard = types.InlineKeyboardMarkup()
 
             callback_button = types.InlineKeyboardButton(
-                text="➕ Beni Gruba Ekle ", url="https://t.me/{bot_username}?startgroup=a")
+                text="➕ Beni Gruba Ekle ", url="https://t.me/seragamebot?startgroup=a")
             callback_button2 = types.InlineKeyboardButton(
                 text="🎧 Müzik Botu ", url="https://t.me/SeraMusicBot")
             callback_button3 = types.InlineKeyboardButton(
