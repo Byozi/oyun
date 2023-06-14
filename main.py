@@ -63,7 +63,7 @@ admins = [kurucu_id,1449935113]
 zaman_hassasiyeti = pow(10, 6)
 
 # Telegram bot nesnesini oluşturun
-bot = telebot.TeleBot(TOKEN)
+bot = telebot.TeleBot(bot_token)
 
 # Botun gruba eklenmesi durumunda çağrılacak olan fonksiyon
 @bot.message_handler(func=lambda message: message.new_chat_members and any(user.id == bot.get_me().id for user in message.new_chat_members))
