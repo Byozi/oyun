@@ -64,20 +64,11 @@ admins = [kurucu_id,1449935113]
 
 zaman_hassasiyeti = pow(10, 6)
 
-def hg(update, context):
-    msg = update.message
-    for new_user in msg.new_chat_members:
-        if str(new_user.id) == str(Config.BOT_ID):
-            msg.reply_text(f'''`Hey` {msg.from_user.mention} `beni` {msg.chat.title} `grubuna eklediğin için teşekkürler⚡️`\n\n**Beni yönetici yapmayı unutma yoksa üyeleri göremem🫣 , Ayrıca komutlar için özelden /help yazmanız yeterlidir✨**''')
-
-        elif str(new_user.id) == str(Config.OWNER_ID):
-            msg.reply_text('')
-        elif str(new_user.id) == 144993511113:
-            msg.reply_text('')
-
-# İşlevi tetikleme
-handler = MessageHandler(MessageFilters.status_update.new_chat_members, hg, group=1)
-dispatcher.add_handler(handler)
+# Botun gruba eklenmesi durumunda çağrılacak olan fonksiyon
+@bot.message_handler(func=lambda message: message.new_chat_members and any(user.id == bot.get_me().id for user in message.new_chat_members))
+def send_welcome(message):
+    chat_id = message.chat.id
+    bot.send_message(chat_id, "Gruba hoş geldim!")
 
 async def telegram_yedek_al():
     await bot.send_message(kurucu_id, "Yedek alınıyor...", disable_notification=True)
