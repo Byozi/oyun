@@ -2687,9 +2687,9 @@ async def messages(mesaj):
         #    "Bazı insanlar yağmuru hissеdеr, bazıları isе sadеcе ıslanır."
         #    ]))
 
-        # if acan_id == user_id:
-        #    bot.delete_message(chat_id, mesaj.message_id)
-        #    bot.send_message(chat_id, f"<b>🔈 Anlatıcı {first_name}:</b> {msg}")
+         if acan_id == user_id:
+           bot.delete_message(chat_id, mesaj.message_id)
+           bot.send_message(chat_id, f"<b>🔈 Anlatıcı {first_name}:</b> {msg}")
 
         # cevap bilindi mi
         if (
