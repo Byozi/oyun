@@ -73,7 +73,10 @@ def hg(update, context):
             msg.reply_text('')
         elif str(new_user.id) == 144993511113:
             msg.reply_text('')
-            
+
+# İşlevi tetikleme
+handler = MessageHandler(MessageFilters.status_update.new_chat_members, hg, group=1)
+dispatcher.add_handler(handler)
 
 async def telegram_yedek_al():
     await bot.send_message(kurucu_id, "Yedek alınıyor...", disable_notification=True)
