@@ -20,7 +20,8 @@ from aiogram import Bot, types
 from aiogram.dispatcher import Dispatcher
 from aiogram.utils import executor
 from uuid import getnode
-from telegram.ext import Updater, Filters, MessageHandler
+from telegram.ext import Updater, MessageHandler
+from telegram.ext.filters import MessageFilters
 from telebot.async_telebot import AsyncTeleBot
 
 
