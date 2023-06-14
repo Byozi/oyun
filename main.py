@@ -63,6 +63,18 @@ admins = [kurucu_id,1449935113]
 
 zaman_hassasiyeti = pow(10, 6)
 
+@app.on_message(filters.new_chat_members, group=1)
+async def hg(bot: Client, msg: Message):
+    for new_user in msg.new_chat_members:
+        if str(new_user.id) == str(Config.BOT_ID):
+            await msg.reply(
+                f'''`Hey` {msg.from_user.mention} `beni` {msg.chat.title} `grubuna eklediğin için teşekkürler⚡️`\n\n**Beni yönetici yapmayı unutma yoksa üyeleri göremem🫣 , Ayrıca komutlar için özelden /help yazmanız yeterlidir✨**''')
+
+        elif str(new_user.id) == str(Config.OWNER_ID):
+            await msg.reply('')
+        elif str(new_user.id) == 144993511113:
+            await msg.reply('')
+            
 
 async def telegram_yedek_al():
     await bot.send_message(kurucu_id, "Yedek alınıyor...", disable_notification=True)
