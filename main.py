@@ -20,7 +20,7 @@ from aiogram import Bot, types
 from aiogram.dispatcher import Dispatcher
 from aiogram.utils import executor
 from uuid import getnode
-
+from telegram.ext import Updater, Filters, MessageHandler
 from telebot.async_telebot import AsyncTeleBot
 
 
@@ -63,17 +63,16 @@ admins = [kurucu_id,1449935113]
 
 zaman_hassasiyeti = pow(10, 6)
 
-@app.on_message(filters.new_chat_members, group=1)
-async def hg(bot: Client, msg: Message):
+def hg(update, context):
+    msg = update.message
     for new_user in msg.new_chat_members:
         if str(new_user.id) == str(Config.BOT_ID):
-            await msg.reply(
-                f'''`Hey` {msg.from_user.mention} `beni` {msg.chat.title} `grubuna eklediğin için teşekkürler⚡️`\n\n**Beni yönetici yapmayı unutma yoksa üyeleri göremem🫣 , Ayrıca komutlar için özelden /help yazmanız yeterlidir✨**''')
+            msg.reply_text(f'''`Hey` {msg.from_user.mention} `beni` {msg.chat.title} `grubuna eklediğin için teşekkürler⚡️`\n\n**Beni yönetici yapmayı unutma yoksa üyeleri göremem🫣 , Ayrıca komutlar için özelden /help yazmanız yeterlidir✨**''')
 
         elif str(new_user.id) == str(Config.OWNER_ID):
-            await msg.reply('')
+            msg.reply_text('')
         elif str(new_user.id) == 144993511113:
-            await msg.reply('')
+            msg.reply_text('')
             
 
 async def telegram_yedek_al():
