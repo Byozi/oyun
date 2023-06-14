@@ -62,16 +62,6 @@ admins = [kurucu_id,1449935113]
 
 zaman_hassasiyeti = pow(10, 6)
 
-# Telegram bot nesnesini oluşturun
-bot = telebot.TeleBot(bot_token)
-
-@bot.message_handler(func=lambda message: message.new_chat_members and any(user.id == bot.get_me().id for user in message.new_chat_members))
-def send_welcome(message):
-    chat_id = message.chat.id
-    user_id = message.from_user.id
-    user_name = message.from_user.first_name
-    bot.send_message(chat_id, f"Merhaba @{user_name}, ben gruba geldim! Teşekkür ederim.", reply_to_message_id=message.message_id)
-
 async def telegram_yedek_al():
     await bot.send_message(kurucu_id, "Yedek alınıyor...", disable_notification=True)
     for i in os.listdir():
