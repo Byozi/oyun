@@ -2343,10 +2343,7 @@ async def callback_inline(cagri):  # çağrıcı cagrici
                 #t = threading.Thread(target=yap)
                 #t.daemon = True
                 # t.start()
-                
-                elif sorgu == "kim":
-    acan_user = f(f"games.{oyun_id}.açan_user")
-    await bot.answer_callback_query(cagri.id, f'❌ Kelimeyi sen sunmuyorsun, {acan_user} sunuyor..!', show_alert=False)
+               
                 
             elif sorgu == "istemiyorum":
                 gecen = int(time.time() - oyun_id/zaman_hassasiyeti)
@@ -2365,7 +2362,10 @@ async def callback_inline(cagri):  # çağrıcı cagrici
 
                 #f(f"games.{oyun_id}", "$del")
                 oyunu_iptal_et(oyun_id)
-
+ 
+                elif sorgu == "kim":
+    acan_user = f(f"games.{oyun_id}.açan_user")
+    await bot.answer_callback_query(cagri.id, f'❌ Kelimeyi sen sunmuyorsun, {acan_user} sunuyor..!', show_alert=False)
         # elif acan_id == "" or not str(oyun_id).isnumeric():
         # elif oyun_id == "":
         #    bot.answer_callback_query(cagri.id, f'❓ Şu anda aktif bir oyun yok. Başlatmak için lütfen /game yazınız.', show_alert=True)
