@@ -2291,99 +2291,82 @@ async def callback_inline(cagri):  # çağrıcı cagrici
             # except:
             #    bot.answer_callback_query(cagri.id, url = "telegram.me/HariboGameBot?start=start")
             #    #bot.answer_callback_query(cagri.id, f'🤖 Önce botla sohbeti başlatmalısınız.', show_alert=False)
-async def handle_callback_query(call):
-    cagri = call
-    sorgu = call.data.split("_")[0]
-    oyun_id = call.data.split("_")[1]
-    chat_id = call.message.chat.id
-    user_id = call.from_user.id
-    first_name = call.from_user.first_name
-    zaman_hassasiyeti = 1000000000
-    if sorgu == "kelime_bak":
-        # def yap():
-        kelime = f(f"games.{oyun_id}.kelime")
-        txt = "📖 Sorun: "+kelime + "\n\n"
 
-        sozluk = f(f"games.{oyun_id}.sozluk")
+            if sorgu == "kelime_bak":
+                # def yap():
+                kelime = f(f"games.{oyun_id}.kelime")
+                txt = "📖 Sorun: "+kelime + "\n\n"
 
-        if sozluk == "":
-            try:
-                sozluk = random.sample(anlam_getir(kelime), 1)[
-                    0].replace("'", "")
-                f(f"games.{oyun_id}.sozluk", sozluk)
-            except:
-                f(f"games.{oyun_id}.sozluk", "yok")
-                pass
+                sozluk = f(f"games.{oyun_id}.sozluk")
 
-        if sozluk != "yok":
-            txt += sozluk
-        # try:
-        #    #getir = ""#getir = tdk.gts.search(kelime)[0].meanings
-        ##    getir = random.sample(anlam_getir(kelime),1)[0]
-        #    #uzunluk = len(getir)
-        #    #txt += getir[random.randint(0,uzunluk-1)].meaning
-        #    txt += getir
-        # except:
-        #    pass
+                if sozluk == "":
+                    try:
+                        sozluk = random.sample(anlam_getir(kelime), 1)[
+                            0].replace("'", "")
+                        f(f"games.{oyun_id}.sozluk", sozluk)
+                    except:
+                        f(f"games.{oyun_id}.sozluk", "yok")
+                        pass
 
-        await bot.answer_callback_query(cagri.id, txt, show_alert=True)
+                if sozluk != "yok":
+                    txt += sozluk
+                # try:
+                #    #getir = ""#getir = tdk.gts.search(kelime)[0].meanings
+                ##    getir = random.sample(anlam_getir(kelime),1)[0]
+                #    #uzunluk = len(getir)
+                #    #txt += getir[random.randint(0,uzunluk-1)].meaning
+                #    txt += getir
+                # except:
+                #    pass
 
-        #t = threading.Thread(target=yap)
-        #t.daemon = True
-        # t.start()
-    elif sorgu == "siradaki_kelime":
-        # def yap():
-        yeni_kelime = random_from_table()["kelime"].replace("'", "")
+                await bot.answer_callback_query(cagri.id, txt, show_alert=True)
 
-        txt = "✨ Yeni sorun: "+yeni_kelime + "\n\n"
+                #t = threading.Thread(target=yap)
+                #t.daemon = True
+                # t.start()
+            elif sorgu == "siradaki_kelime":
+                # def yap():
+                yeni_kelime = random_from_table()["kelime"].replace("'", "")
 
-        # try:
-        #    getir = tdk.gts.search(yeni_kelime)[0].meanings
-        #    uzunluk = len(getir)
-        #    txt += getir[random.randint(0,uzunluk-1)].meaning
-        # except:
-        #    pass
+                txt = "✨ Yeni sorun: "+yeni_kelime + "\n\n"
 
-        await bot.answer_callback_query(cagri.id, txt, show_alert=True)
-        f(f"games.{oyun_id}.sozluk", "")
-        f(f"games.{oyun_id}.kelime", yeni_kelime)
-        #t = threading.Thread(target=yap)
-        #t.daemon = True
-        # t.start()
-    elif sorgu == "istemiyorum":
-        gecen = int(time.time() - oyun_id/zaman_hassasiyeti)
-        if gecen < 3:
-            await bot.answer_callback_query(cagri.id, f"📜 Sunuculuğu bırakmak için 3 saniye geçmeli, şu anda geçen: {gecen}", show_alert=True)
-            return
+                # try:
+                #    getir = tdk.gts.search(yeni_kelime)[0].meanings
+                #    uzunluk = len(getir)
+                #    txt += getir[random.randint(0,uzunluk-1)].meaning
+                # except:
+                #    pass
 
-        oyun_tipi = f(f"games.{oyun_id}.oyun_tipi")
+                await bot.answer_callback_query(cagri.id, txt, show_alert=True)
+                f(f"games.{oyun_id}.sozluk", "")
+                f(f"games.{oyun_id}.kelime", yeni_kelime)
+                #t = threading.Thread(target=yap)
+                #t.daemon = True
+                # t.start()
+            elif sorgu == "istemiyorum":
+                gecen = int(time.time() - oyun_id/zaman_hassasiyeti)
+                if gecen < 3:
+                    await bot.answer_callback_query(cagri.id, f"📜 Sunuculuğu bırakmak için 3 saniye geçmeli, şu anda geçen: {gecen}", show_alert=True)
+                    return
 
-        keyboard = types.InlineKeyboardMarkup()
-        callback_button = types.InlineKeyboardButton(
-            text="Sunucu olmak istiyorum! 📢", callback_data="istiyorum_"+oyun_tipi)
-        keyboard.add(callback_button)
-        kelime = f(f"games.{oyun_id}.kelime")
-        await bot.send_message(chat_id, f'🔴 <a href="tg://user?id={user_id}">{first_name}</a> sunucu olmak istemiyor! → {kelime}', reply_markup=keyboard)
+                oyun_tipi = f(f"games.{oyun_id}.oyun_tipi")
 
-        #f(f"games.{oyun_id}", "$del")
-        oyunu_iptal_et(oyun_id)
+                keyboard = types.InlineKeyboardMarkup()
+                callback_button = types.InlineKeyboardButton(
+                    text="Sunucu olmak istiyorum! 📢", callback_data="istiyorum_"+oyun_tipi)
+                keyboard.add(callback_button)
+                kelime = f(f"games.{oyun_id}.kelime")
+                await bot.send_message(chat_id, f'🔴 <a href="tg://user?id={user_id}">{first_name}</a> sunucu olmak istemiyor! → {kelime}', reply_markup=keyboard)
 
-    elif sorgu == "sorular":
-        acan_user = f(f"games.{oyun_id}.açan_user")
-        user_messages = ""
-        messages = await bot.history(chat_id, limit=100)
-        for message in messages:
-            if message.from_user.id == acan_user:
-                user_messages += "\n- " + message.text
-                
-        if user_messages:
-            await bot.send_message(chat_id, f'İşte {acan_user} tarafından yazılan mesajlar: {user_messages}')
+                #f(f"games.{oyun_id}", "$del")
+                oyunu_iptal_et(oyun_id)
+
+        # elif acan_id == "" or not str(oyun_id).isnumeric():
+        # elif oyun_id == "":
+        #    bot.answer_callback_query(cagri.id, f'❓ Şu anda aktif bir oyun yok. Başlatmak için lütfen /game yazınız.', show_alert=True)
         else:
-            await bot.answer_callback_query(cagri.id, f'{acan_user} henüz bir mesaj yazmadı.', show_alert=False)
-
-    else:
-        acan_user = f(f"games.{oyun_id}.açan_user")
-        await bot.answer_callback_query(cagri.id, f'❌ Kelimeyi sen sunmuyorsun, {acan_user} sunuyor..!', show_alert=False)
+            acan_user = f(f"games.{oyun_id}.açan_user")
+            await bot.answer_callback_query(cagri.id, f'❌ Kelimeyi sen sunmuyorsun, {acan_user} sunuyor..!', show_alert=False)
 
     # else:
     #    bot.answer_callback_query(cagri.id, f'😔 Bu buton artık işlevsiz.', show_alert=False)
