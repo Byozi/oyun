@@ -686,6 +686,9 @@ async def sessiz_sinema_baslat(message, **kwargs):
         callback_button4 = types.InlineKeyboardButton(
             text="Sunucu Olmak İstemiyorum ⛔", callback_data="istemiyorum")
         keyboard.add(callback_button4)
+         callback_button5 = types.InlineKeyboardButton(
+            text="Sorular", callback_data="sorular")
+        keyboard.add(callback_button5)
     #bot.send_message(chat_id, text, reply_markup=keyboard)
 
     #konumlar = oyun_var_mi(chat_id)
