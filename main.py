@@ -2292,9 +2292,10 @@ async def callback_inline(cagri):  # çağrıcı cagrici
             #    bot.answer_callback_query(cagri.id, url = "telegram.me/HariboGameBot?start=start")
             #    #bot.answer_callback_query(cagri.id, f'🤖 Önce botla sohbeti başlatmalısınız.', show_alert=False)
 
-if sorgu == "kelime_bak":
-    kelime = f(f"games.{oyun_id}.kelime")
-    txt = "📖 Sorun: "+kelime + "\n\n"
+             if sorgu == "kelime_bak":
+                # def yap():
+                kelime = f(f"games.{oyun_id}.kelime")
+                txt = "📖 Sorun: "+kelime + "\n\n"  
 
     sozluk = f(f"games.{oyun_id}.sozluk")
 
