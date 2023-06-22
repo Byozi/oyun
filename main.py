@@ -2364,16 +2364,21 @@ async def callback_inline(cagri):  # çağrıcı cagrici
         # elif acan_id == "" or not str(oyun_id).isnumeric():
         # elif oyun_id == "":
         #    bot.answer_callback_query(cagri.id, f'❓ Şu anda aktif bir oyun yok. Başlatmak için lütfen /game yazınız.', show_alert=True)
-   else:
-    acan_user = f(f"games.{oyun_id}.açan_user")
-    if sorgu == "/soru":
-        sorular = f(f"games.{oyun_id}.sorular")
-        if sorular:
-            await bot.send_message(chat_id, f'İşte sorular:\n{sorular}')
+        elif sorgu == "sorular":
+                acan_user = f(f"games.{oyun_id}.açan_user")
+                messages = await bot.history(chat_id, limit=100, offset_date=None, offset_id=0, max_id=0, min_id=0, add_offset=0, reverse=True, reply_markup=None, user_id=None, search=None, from_user=None, progress=None)
+                question_messages = [m for m in messages if m.from_user.username == acan_user and m.text.startswith("Kelime:")]
+                if len(question_messages) == 0:
+                    await bot.answer_callback_query(cagri.id, f'🤔 {acan_user} henüz bir soru sormamış.', show_alert=True)
+                else:
+                    question_text = "İşte sorular:\n"
+                    for message in question_messages:
+                        question_text += message.text + "\n"
+                    await bot.answer_callback_query(cagri.id, question_text, show_alert=False)
+        
         else:
-            await bot.send_message(chat_id, 'Henüz hiç soru yok.')
-    else:
-        await bot.answer_callback_query(cagri.id, f'❌ Kelimeyi sen sunmuyorsun, {acan_user} sunuyor..!', show_alert=False)
+            acan_user = f(f"games.{oyun_id}.açan_user")
+            await bot.answer_callback_query(cagri.id, f'❌ Kelimeyi sen sunmuyorsun, {acan_user} sunuyor..!', show_alert=False)
 
     # else:
     #    bot.answer_callback_query(cagri.id, f'😔 Bu buton artık işlevsiz.', show_alert=False)
