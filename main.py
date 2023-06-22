@@ -2376,6 +2376,7 @@ async def callback_inline(cagri):  # çağrıcı cagrici
         await bot.answer_callback_query(cagri.id, f'❌ Kelimeyi sen sunmuyorsun, {acan_user} sunuyor..!', show_alert=False)
 
 
+
     # else:
     #    bot.answer_callback_query(cagri.id, f'😔 Bu buton artık işlevsiz.', show_alert=False)
 
