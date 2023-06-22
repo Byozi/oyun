@@ -2364,7 +2364,7 @@ async def callback_inline(cagri):  # çağrıcı cagrici
         # elif acan_id == "" or not str(oyun_id).isnumeric():
         # elif oyun_id == "":
         #    bot.answer_callback_query(cagri.id, f'❓ Şu anda aktif bir oyun yok. Başlatmak için lütfen /game yazınız.', show_alert=True)
-      else:
+   else:
     acan_user = f(f"games.{oyun_id}.açan_user")
     if sorgu == "/soru":
         sorular = f(f"games.{oyun_id}.sorular")
@@ -2374,9 +2374,6 @@ async def callback_inline(cagri):  # çağrıcı cagrici
             await bot.send_message(chat_id, 'Henüz hiç soru yok.')
     else:
         await bot.answer_callback_query(cagri.id, f'❌ Kelimeyi sen sunmuyorsun, {acan_user} sunuyor..!', show_alert=False)
-
-
-
 
     # else:
     #    bot.answer_callback_query(cagri.id, f'😔 Bu buton artık işlevsiz.', show_alert=False)
